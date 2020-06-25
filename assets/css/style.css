@@ -1,0 +1,28 @@
+:root{
+    --white: #ECEEEB;
+    --blue: #0597F2;
+    --light-blue: #05AFF2;
+    --green: #04D94F;
+    --orange: #F29F05;
+    --red: #DA291C;
+    --black: #060606;
+}
+
+header{
+    background-color: var(--black);
+    color: var(--white);
+}
+
+main{
+    background-color: var(--white);
+}
+
+.btn{
+    background-color: var(--light-blue);
+    color: var(--white);
+}
+
+.btn:hover{
+    background-color: var(--blue);
+    color: var(--white);
+}
