@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
@@ -16,15 +17,77 @@
         </div>
     </header>
 
-    <main class="flex-row justify-space-between">
-        <div class="col-12 col-md-4">
-            <form>
-                <div class="form-group my-2">
-                    <label for="inputCity">Search for a City:</label>
-                    <input type="text" class="form-control" id="inputCity">
-                    <button type="submit" class="btn btn-block my-2">Submit</button>
+    <main class="row flex-row justify-space-between px-3">
+        <div class="col-12 col-md-4 py-2">
+                <form>
+                    <div class="form-group my-2">
+                        <label for="inputCity">Search for a City:</label>
+                        <input type="text" class="form-control" id="inputCity">
+                        <button type="submit" class="btn btn-block my-2"><span class="oi oi-magnifying-glass"></span> Search</button>
+                    </div>
+                </form>
+                <ul class="list-group">
+                    <li class="list-group-item">CITY 1</li>
+                    <li class="list-group-item">CITY 2</li>
+                    <li class="list-group-item">CITY 3</li>
+                    <li class="list-group-item">CITY 4</li>
+                    <li class="list-group-item">CITY 5</li>
+                </ul>
+        </div>
+        <div class="col-12 col-md-8 py-3">
+            <div class="card p-3">
+                <h3 class="card-header mb-3">CITY NAME AND DATE</h3>
+                <p>Temperature</p>
+                <p>Humidity</p>
+                <p>Wind Speed</p>
+                <p>UV Index</p>
+            </div>
+            <div class="card p-3">
+                <h3 class="card-header mb-3">5 Day Forecast</h3>
+                <div class="row justify-content-center">
+                    <div class="col-2">
+                        <div class="forecast-container">
+                            <h4>DATE 1</h4>
+                            <span>ICON</span>
+                            <p>Temp</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="forecast-container">
+                            <h4>DATE 2</h4>
+                            <span>ICON</span>
+                            <p>Temp</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="forecast-container">
+                            <h4>DATE 3</h4>
+                            <span>ICON</span>
+                            <p>Temp</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="forecast-container">
+                            <h4>DATE 4</h4>
+                            <span>ICON</span>
+                            <p>Temp</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="forecast-container">
+                            <h4>DATE 5</h4>
+                            <span>ICON</span>
+                            <p>Temp</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
                 </div>
-            </form>
+
+            </div>
         </div>
     </main>
 
