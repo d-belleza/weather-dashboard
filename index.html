@@ -23,7 +23,7 @@
                     <div class="form-group my-2">
                         <label for="inputCity">Search for a City:</label>
                         <input type="text" class="form-control" id="inputCity">
-                        <button type="submit" class="btn btn-block my-2"><span class="oi oi-magnifying-glass"></span> Search</button>
+                        <button class="btn btn-block my-2" id="searchBtn"><span class="oi oi-magnifying-glass"></span> Search</button>
                     </div>
                 </form>
                 <ul class="list-group">
@@ -36,11 +36,13 @@
         </div>
         <div class="col-12 col-md-8 py-3">
             <div class="card p-3">
-                <h3 class="card-header mb-3">CITY NAME AND DATE</h3>
-                <p>Temperature</p>
-                <p>Humidity</p>
-                <p>Wind Speed</p>
-                <p>UV Index</p>
+                <div id="nameAndDate">
+                    <h3 class="card-header mb-3" id="cityName">Current Weather</h3>
+                </div>
+                <p id="temperature"></p>
+                <p id="humidity"></p>
+                <p id="windSpeed"></p>
+                <p id="uvindex"></p>
             </div>
             <div class="card p-3">
                 <h3 class="card-header mb-3">5 Day Forecast</h3>
@@ -91,6 +93,7 @@
         </div>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
