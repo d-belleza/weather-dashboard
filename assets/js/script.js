@@ -21,29 +21,29 @@ function getCurrentWeather(location){
     )
         .then(function(response){
             if(response.ok){
-                return response.json();
+                response.json()
+                .then(function(response){
+                    // display current weather
+                    $("#cityName")
+                        .addClass("bg-primary text-light")
+                        .text(response.name + " (" + new Date().toLocaleDateString() + ") ");
+                    $("#temperature").text("Temperature: " + response.main.temp + "°F");
+                    $("#humidity").text("Humidity: " + response.main.humidity + "%");
+                    $("#windSpeed").text("Wind speed: " + response.wind.speed + " MPH");
+        
+                    var iconCode = response.weather[0].icon;
+                    var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + iconCode + ".png");
+                    $("#cityName").append(icon);
+        
+                    // display UV index
+                    getUV(response.coord.lat, response.coord.lon);
+
+                    // display 5 day forecast
+                    getForecast(location);
+                })
             }else{
                 alert("Could not find city");
             }
-
-        })
-        .then(function(response){
-            // display current weather
-            $("#cityName")
-                .addClass("bg-primary text-light")
-                .text(response.name + " (" + new Date().toLocaleDateString() + ") ");
-            $("#temperature").text("Temperature: " + response.main.temp + "°F");
-            $("#humidity").text("Humidity: " + response.main.humidity + "%");
-            $("#windSpeed").text("Wind speed: " + response.wind.speed + " MPH");
-
-            var iconCode = response.weather[0].icon;
-            var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + iconCode + ".png");
-            $("#cityName").append(icon);
-
-            // display UV index
-            getUV(response.coord.lat, response.coord.lon);
-            getForecast(location);
-            
 
         })
         .catch(function(error){
@@ -57,9 +57,10 @@ function getUV(lat, lon){
         apiKey + '&lat=' + lat +'&lon=' + lon
     )
         .then(function(data){
-            return data.json;
+            return data.json();
         })
         .then(function(data){
+            console.log(data.value)
             $("#uvindex").text("UV Index: ");
             var uvColor = $("<span>").addClass("btn").text(data.value);
 
@@ -72,5 +73,15 @@ function getUV(lat, lon){
                 uvColor.addClass("severe")
             }
             $("#uvindex").append(uvColor);
+        })
+}
+
+function getForecast(location){
+    fetch(
+        'http://api.openweathermap.org/data/2.5/forecast?q=' +
+        location + '&units=imperial&appid=' + apiKey
+    )
+        .then(function(response){
+            return response.json();
         })
 }
