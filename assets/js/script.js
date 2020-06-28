@@ -1,5 +1,7 @@
 var apiKey = 'b32eeab351de3490d17b1b3bff11721e';
 
+// list of cities
+var cityList = [];
 
 
 // get city name when search button is pressed
@@ -14,6 +16,7 @@ $("#searchBtn").on("click", function(){
 })
 
 
+// get current weather data
 function getCurrentWeather(location){
     fetch(
         'http://api.openweathermap.org/data/2.5/weather?q=' +
@@ -23,6 +26,11 @@ function getCurrentWeather(location){
             if(response.ok){
                 response.json()
                 .then(function(response){
+                    // add city to history list if not in list
+                    if(!cityList.includes(response.name)){
+                        addToHistory(response.name);
+                    }
+
                     // display current weather
                     $("#cityName")
                         .addClass("fetchedcolor")
@@ -91,7 +99,6 @@ function getForecast(location){
             for(var i = 0; i < response.list.length; i++){
                 // display only forecasts at noon
                 if(response.list[i].dt_txt.indexOf("12:00:00") !== -1){
-                    //$("#forecast-container").addClass("")
                     var column = $("<div>").addClass("col-md-2 m-2 fetchedcolor py-4");
                     var day = $("<h5>").text(new Date(response.list[i].dt_txt).toLocaleDateString());
                     var iconCode = response.list[i].weather[0].icon
@@ -101,8 +108,44 @@ function getForecast(location){
 
                     column.append(day,icon,temp,humidity);
                     $("#forecast-container").append(column);
-
                 }
             }
         })
 }
+
+
+// create list element
+function addToHistory(city){
+    // create list element
+    var li = $("<li>").addClass("list-group-item list-group-item-action").text(city);
+    $("#history-list").append(li);
+
+    saveList(city);
+}
+
+// save city to local storage
+function saveList(city){
+    cityList.push(city);
+    localStorage.setItem('cities', JSON.stringify(cityList));
+}
+
+// load search history
+function loadList(){
+    var getCities = localStorage.getItem('cities');
+    getCities = JSON.parse(getCities);
+
+    if(!getCities){
+        return false;
+    }
+
+    for(var i = 0; i < getCities.length; i++){
+        addToHistory(getCities[i]);
+    }
+}
+
+// search city from history list when clicked
+function cityClicked(){
+    getCurrentWeather(event.target.innerText);
+}
+
+loadList();

@@ -17,8 +17,10 @@
         </div>
     </header>
 
+    <!--main-->
     <main class="row flex-row justify-space-between px-3">
         <div class="col-12 col-md-4 py-2">
+                <!--search box-->
                 <form>
                     <div class="form-group form-inline my-2">
                         <label for="inputCity">Search for a City: </label>
@@ -26,15 +28,13 @@
                         <button class="btn m-2" id="searchBtn"><span class="oi oi-magnifying-glass"></span></button>
                     </div>
                 </form>
-                <ul class="list-group">
-                    <li class="list-group-item">CITY 1</li>
-                    <li class="list-group-item">CITY 2</li>
-                    <li class="list-group-item">CITY 3</li>
-                    <li class="list-group-item">CITY 4</li>
-                    <li class="list-group-item">CITY 5</li>
-                </ul>
+
+                <!--history list-->
+                <ul class="list-group" id="history-list" onclick="cityClicked()"></ul>
         </div>
+
         <div class="col-12 col-md-8 py-3">
+            <!--current weather-->
             <div class="card p-3">
                 <div id="nameAndDate">
                     <h3 class="card-header mb-3" id="cityName">Current Weather</h3>
@@ -44,6 +44,8 @@
                 <p id="windSpeed"></p>
                 <p id="uvindex"></p>
             </div>
+
+            <!--weather forecast-->
             <div class="card p-3">
                 <h3 class="card-header mb-3">5 Day Forecast</h3>
                 <div id="forecast-container" class="row justify-content-center"></div>
