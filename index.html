@@ -20,10 +20,10 @@
     <main class="row flex-row justify-space-between px-3">
         <div class="col-12 col-md-4 py-2">
                 <form>
-                    <div class="form-group my-2">
-                        <label for="inputCity">Search for a City:</label>
-                        <input type="text" class="form-control" id="inputCity">
-                        <button class="btn btn-block my-2" id="searchBtn"><span class="oi oi-magnifying-glass"></span> Search</button>
+                    <div class="form-group form-inline my-2">
+                        <label for="inputCity">Search for a City: </label>
+                        <input type="text" class="form-control ml-2" id="inputCity">
+                        <button class="btn m-2" id="searchBtn"><span class="oi oi-magnifying-glass"></span></button>
                     </div>
                 </form>
                 <ul class="list-group">
@@ -46,49 +46,7 @@
             </div>
             <div class="card p-3">
                 <h3 class="card-header mb-3">5 Day Forecast</h3>
-                <div class="row justify-content-center">
-                    <div class="col-2">
-                        <div class="forecast-container">
-                            <h4>DATE 1</h4>
-                            <span>ICON</span>
-                            <p>Temp</p>
-                            <p>Humidity</p>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="forecast-container">
-                            <h4>DATE 2</h4>
-                            <span>ICON</span>
-                            <p>Temp</p>
-                            <p>Humidity</p>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="forecast-container">
-                            <h4>DATE 3</h4>
-                            <span>ICON</span>
-                            <p>Temp</p>
-                            <p>Humidity</p>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="forecast-container">
-                            <h4>DATE 4</h4>
-                            <span>ICON</span>
-                            <p>Temp</p>
-                            <p>Humidity</p>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="forecast-container">
-                            <h4>DATE 5</h4>
-                            <span>ICON</span>
-                            <p>Temp</p>
-                            <p>Humidity</p>
-                        </div>
-                    </div>
-                </div>
-
+                <div id="forecast-container" class="row justify-content-center"></div>
             </div>
         </div>
     </main>

@@ -1,5 +1,4 @@
 :root{
-    --white: #ECEEEB;
     --blue: #0597F2;
     --light-blue: #05AFF2;
     --green: #04D94F;
@@ -10,34 +9,34 @@
 
 header{
     background-color: var(--black);
-    color: var(--white);
+    color: white;
 }
 
-main{
-    background-color: var(--white);
-}
-
-.btn{
+#searchBtn{
     background-color: var(--light-blue);
-    color: var(--white);
+    color: white;
 }
 
-.btn:hover{
+#searchBtn:hover{
     background-color: var(--blue);
-    color: var(--white);
 }
 
 .favorable{
     background-color: var(--green);
-    color: var(--white);
+    color: white;
 }
 
 .moderate{
     background-color: var(--orange);
-    color: var(--white);
+    color: white;
 }
 
 .severe{
     background-color: var(--red);
-    color: var(--white);
+    color: white;
+}
+
+.fetchedcolor{
+    background-color: var(--blue);
+    color: white;
 }

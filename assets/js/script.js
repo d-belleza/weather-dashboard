@@ -25,7 +25,7 @@ function getCurrentWeather(location){
                 .then(function(response){
                     // display current weather
                     $("#cityName")
-                        .addClass("bg-primary text-light")
+                        .addClass("fetchedcolor")
                         .text(response.name + " (" + new Date().toLocaleDateString() + ") ");
                     $("#temperature").text("Temperature: " + response.main.temp + "°F");
                     $("#humidity").text("Humidity: " + response.main.humidity + "%");
@@ -60,7 +60,6 @@ function getUV(lat, lon){
             return data.json();
         })
         .then(function(data){
-            console.log(data.value)
             $("#uvindex").text("UV Index: ");
             var uvColor = $("<span>").addClass("btn").text(data.value);
 
@@ -83,5 +82,27 @@ function getForecast(location){
     )
         .then(function(response){
             return response.json();
+        })
+        .then(function(response){
+            // override forecast
+            $("#forecast-container").text("");
+
+            // look at all forecasts
+            for(var i = 0; i < response.list.length; i++){
+                // display only forecasts at noon
+                if(response.list[i].dt_txt.indexOf("12:00:00") !== -1){
+                    //$("#forecast-container").addClass("")
+                    var column = $("<div>").addClass("col-md-2 m-2 fetchedcolor py-4");
+                    var day = $("<h5>").text(new Date(response.list[i].dt_txt).toLocaleDateString());
+                    var iconCode = response.list[i].weather[0].icon
+                    var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + iconCode + ".png");
+                    var temp = $("<p>").text("Temperature: " + Math.floor(response.list[i].main.temp) + "°F");
+                    var humidity = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
+
+                    column.append(day,icon,temp,humidity);
+                    $("#forecast-container").append(column);
+
+                }
+            }
         })
 }
