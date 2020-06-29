@@ -40,7 +40,7 @@ function getCurrentWeather(location){
                     $("#windSpeed").text("Wind speed: " + response.wind.speed + " MPH");
         
                     var iconCode = response.weather[0].icon;
-                    var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + iconCode + ".png");
+                    var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + iconCode + ".png");
                     $("#cityName").append(icon);
         
                     // display UV index
@@ -61,7 +61,7 @@ function getCurrentWeather(location){
 
 function getUV(lat, lon){
     fetch(
-        'http://api.openweathermap.org/data/2.5/uvi?appid=' +
+        'https://api.openweathermap.org/data/2.5/uvi?appid=' +
         apiKey + '&lat=' + lat +'&lon=' + lon
     )
         .then(function(data){
@@ -85,7 +85,7 @@ function getUV(lat, lon){
 
 function getForecast(location){
     fetch(
-        'http://api.openweathermap.org/data/2.5/forecast?q=' +
+        'https://api.openweathermap.org/data/2.5/forecast?q=' +
         location + '&units=imperial&appid=' + apiKey
     )
         .then(function(response){
