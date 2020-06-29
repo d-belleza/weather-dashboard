@@ -19,7 +19,7 @@ $("#searchBtn").on("click", function(){
 // get current weather data
 function getCurrentWeather(location){
     fetch(
-        'http://api.openweathermap.org/data/2.5/weather?q=' +
+        'https://api.openweathermap.org/data/2.5/weather?q=' +
         location + '&units=imperial&appid=' + apiKey
     )
         .then(function(response){
@@ -102,7 +102,7 @@ function getForecast(location){
                     var column = $("<div>").addClass("col-md-2 m-2 fetchedcolor py-4");
                     var day = $("<h5>").text(new Date(response.list[i].dt_txt).toLocaleDateString());
                     var iconCode = response.list[i].weather[0].icon
-                    var icon = $("<img>").attr("src", "http://openweathermap.org/img/w/" + iconCode + ".png");
+                    var icon = $("<img>").attr("src", "https://openweathermap.org/img/w/" + iconCode + ".png");
                     var temp = $("<p>").text("Temperature: " + Math.floor(response.list[i].main.temp) + "°F");
                     var humidity = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
 
